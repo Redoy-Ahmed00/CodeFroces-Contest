@@ -15,51 +15,43 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
+    string s, ans;
     cin >> s;
-
-    vi fpos, spos;
-    string s1="",s2="",ans="";
-
-    vector<char> sufmax(n);
-    sufmax[n-1] = s[n-1];
-
-    for(int i = n-2; i >= 0; i--)
-        sufmax[i] = max(s[i], sufmax[i+1]);
+    ans = s;
+    char mx = s[0];
+    
+    string g1 = "",g2 = "";
+    vi i1,i2;
 
     rep(i,0,n)
     {
-        if(s[i] == sufmax[i])
+        if(s[i]>=mx)
         {
-            fpos.push_back(i);
-            s1 += s[i];
+            mx=s[i];
+            g1+=s[i];
+            i1.push_back(i);
         }
         else
         {
-            spos.push_back(i);
-            s2+=s[i];
+            g2+=s[i];
+            i2.push_back(i);
         }
     }
-    sort(s1.begin(),s1.end());
-    sort(s2.begin(),s2.end());
+    
+    sort(g1.begin(),g1.end());
+    sort(g2.begin(),g2.end());
 
-    int p =s1.size(), q = s2.size();
-    int k1 = 0, k2=0;
-    rep(i,0,n)
+    int i = 0;
+    for(auto x : i1)
     {
-        if(i==fpos[k1])
-        {
-            ans+=s1[k1];
-            k1++;
-        }
-        else
-        {
-            ans+=s2[k2];
-            k2++;
-        }
+        ans[x] = g1[i++];
+    }
+    i = 0;
+    for(auto x : i2)
+    {
+        ans[x] = g2[i++];
     }
     cout << ans << nl;
-    
 }
 
 int main ()
