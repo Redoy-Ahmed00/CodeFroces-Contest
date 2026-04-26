@@ -15,31 +15,15 @@ void solve()
 {
     int n;
     cin >> n;
-
-    vi v(n), ans(n+1,0), mex(n+1,0);
-
+    bool has = false;
     rep(i,0,n)
     {
-        cin >> v[i];
-        mex[v[i]]++;
+        int a;
+        cin >> a;
+        if(a==100)
+            has = true;
     }
-    int cnt = 0;
-    rep(i,0,n+1)
-    {
-        if(mex[i] == 0)
-        {
-            ans[i] = cnt;
-            cnt++;
-        }
-        else
-        {
-            ans[i]=mex[i];
-        }
-    }
-
-    rep(i,0,n+1)
-        cout << ans[i] << " ";
-    cout << nl;
+    cout <<( (has) ? "Yes" : "No") << nl;
 }
 
 int main ()

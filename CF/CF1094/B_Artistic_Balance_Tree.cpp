@@ -13,33 +13,7 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int n;
-    cin >> n;
-
-    vi v(n), ans(n+1,0), mex(n+1,0);
-
-    rep(i,0,n)
-    {
-        cin >> v[i];
-        mex[v[i]]++;
-    }
-    int cnt = 0;
-    rep(i,0,n+1)
-    {
-        if(mex[i] == 0)
-        {
-            ans[i] = cnt;
-            cnt++;
-        }
-        else
-        {
-            ans[i]=mex[i];
-        }
-    }
-
-    rep(i,0,n+1)
-        cout << ans[i] << " ";
-    cout << nl;
+    
 }
 
 int main ()
